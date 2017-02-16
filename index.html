@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>京东分页</title>
+	<style type="text/css">
+		body{
+			font-family: 'Microsoft Yahei','\5FAE\8F6F\96C5\9ED1',Arial,'Hiragino Sans GB','\5B8B\4F53';
+		}
+		.currentPage{
+			background: #f6f6f6;
+    		color: #a5a5a5;
+		}
+		a{
+			display:block;
+			border: 1px solid #e6e6e6;
+			border-radius:1px; 
+			float: left;
+			text-decoration: none;
+			width: 38px;
+			height: 38px;
+			line-height: 38px;
+			text-align: center;
+			margin-right: -1px;
+			font-size: 14px;
+			
+			color:#5e5e5e;
+			
+		}
+		a:hover{
+			background: #f6f6f6;
+    		color: #a5a5a5;
+		}
+		.pr{
+			
+			
+			
+			width: 98px;
+			height: 38px;
+			
+		}
+		span{
+			display: block;
+			float: left;
+			width: 10px;
+			height: 40px;
+			line-height: 34px;
+			padding: 0 15px;
+			font-size: 10px;
+			
+			color: #a5a5a5;
+			letter-spacing: 0px;
+		}
+		p{
+			position: absolute;
+			bottom: 20px;
+			left: 60px;
+		}
+	</style>
+</head>
+<body>
+	<p id="pageBar">
+		<a href="#" class="pr" v-on:click='prevPage' v-if='currentPage!=1'>< 上一页</a>
+		
+		<!-- 当前页小于5时的显示 -->
+		<a href="#" v-for='n in (currentPage-1)' v-on:click='pageClick' v-if='currentPage<5'>{{n}}</a>
+
+		<!-- 当前页大于5时 -->
+		<a href="#" v-on:click='pageClick' v-if='currentPage>=5'>1</a>
+		<span v-if='currentPage>=5'>...</span>
+		<a href="#" v-on:click='pageClick' v-if='currentPage>=5'>{{currentPage-2}}</a>
+		<a href="#" v-on:click='pageClick' v-if='currentPage>=5'>{{currentPage-1}}</a>
+		
+
+		<!-- 当前页 -->
+		<a href="#" class="currentPage">{{currentPage}}</a>
+		<!-- 当前页小于总页数减三 -->
+		<a href="#" v-on:click='pageClick' v-if='currentPage<(pageCount-3)'>{{currentPage+1}}</a>
+		<a href="#" v-on:click='pageClick' v-if='currentPage<(pageCount-3)'>{{currentPage+2}}</a>
+		<span v-if='currentPage<(pageCount-3)'>...</span>
+		<a href="#" v-on:click='pageClick' v-if='currentPage<(pageCount-3)'>{{pageCount}}</a>
+
+		<!-- 当前页大于等于总页数减三 -->
+		<a href="#" v-for='n in pageCount-currentPage' v-on:click='pageClick' v-if='currentPage>=(pageCount-3)' >{{n+currentPage}}</a>
+
+		<a href="#" class="pr" v-on:click='nextPage' v-if='currentPage!=pageCount'>下一页 ></a>
+	</p>
+
+
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	var Page = function(recordCount,pageSize){
+		this.recordCount = recordCount;
+		this.pageSize = pageSize ;
+		this.pageNumber = 5;
+		this.pageCount = Math.ceil(recordCount / pageSize) ;
+	}
+
+	Page.prototype.prevPage = function(){
+		if(this.pageNumber > 1) {
+        this.pageNumber--;
+    }
+	}
+
+	Page.prototype.nextPage = function(){
+		if(this.pageNumber < this.pageCount) {
+        this.pageNumber++;
+    }
+	}
+
+	// Page.prototype.currentPage = function(){
+	// 	currentPage = this.pageNumber;
+	// }
+
+	var page = new Page(2200,9);
+
+
+	//Vue
+	var pagebar = new Vue({
+		el:'#pageBar',
+		data: {
+			pageNumber: page.pageNumber,
+        	pageCount: page.pageCount,
+        	currentPage: 1,
+        	// list:[{
+        	// 	page.pageNumber,
+        	// }]
+        	
+		},
+		methods:{
+			prevPage: function() {
+            page.prevPage();
+            this.currentPage--;
+
+        	},
+
+        	nextPage: function() {
+            page.nextPage();
+            this.currentPage++;
+
+        	},
+
+        	pageClick: function(e){
+
+        		this.currentPage = parseInt(e.target.text);
+
+        		console.log(e.target.text);
+        	}
+		}
+	})
+
+</script>	
+</body>
+</html>
