@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>团团购</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,width=device-width,height=device-height, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	
+</head>
+<body>
+	<header>
+		<nav>
+			<a class="arrow">
+				<img src="images/arrow-left.png"/>
+			</a>
+			<a class="type">
+				<span class="tenant selected">商户</span>
+				<span class="buy">闪惠团购</span>
+			</a>
+			<a class="search">
+				<img src="images/search.png" />
+			</a>
+		</nav>
+		<div>
+			<p>全部商区</p>
+			<p class="selected">全部美食</p>
+			<p>智能排序</p>
+		</div>
+	</header>
+
+	<!-- 商家列表 -->
+
+	<section id="shopList" >
+
+	<template v-for="shop in shopList">
+	<div class="big" >
+		<div class="img">
+			<img :src="shop.shopPicture"/>
+		</div>
+		<div class="content">
+			<h2><span class="shopName">{{shop.shopName}}</span><span class="group" v-if="shop.isPromo"></span><span class="isHui" v-if="shop.isHui"></span></h2>
+			<p><span :class="shop.star |  starClass"></span>￥<span class="price">{{shop.price}}</span>/人</p>
+			<p><span class="address">{{shop.address}}</span><span class="cuisine">{{shop.type}}</span></p>
+		</div>
+	</div>
+	<p class="shop-type" v-for="tuan in shop.tuan" >
+		<span :class="tuan.type | tuanT"></span>
+		<span class="tuan-title">{{tuan.title}}</span>
+		<span class="tuan-arrow"></span>
+	</p>
+	</template>
+	</section>
+
+
+
+	<script src="jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/data.js"></script>
+	<script src="vue.js"></script>
+	
+
+
+	<script type="text/javascript">
+		var shopList = new Vue({
+			el:'#shopList',
+			data:{
+				shopList: data
+
+			},
+			filters: {
+        // star：评价星星数量过滤器
+        	starClass: function(val){
+	            return {
+	                '5': 'star5',
+	                '4.5': 'star45',
+	                '4': 'star4',
+	                '3.5': 'star35',
+	                '3': 'star3',
+	                '2.5': 'star25',
+	                '2': 'star2',
+	                '1.5': 'star15',
+	                '1': 'star1'
+	            }[val]
+        	},
+	        tuanT: function (val){
+	        	return {
+	        		'1': 'tuan-type1',
+	        		'2': 'tuan-type2'
+	        	}[val]
+	        }
+    }
+		})
+
+console.log(shopList.data1);
+
+
+	$(window).scroll(function(){
+	     var scrollTop = $(this).scrollTop();        //滚动条距离顶部的高度
+	     var scrollHeight = $(document).height();     //当前页面的总高度
+	     var clientHeight = $(this).height();       //当前可视的页面高度
+	     // console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+	     if(scrollTop + clientHeight >= scrollHeight){     //距离顶部+当前高度 >=文档总高度 即代表滑动到底部 count++;                 //每次滑动count加1	
+	        	var i = random(0,3);
+	        	shopList.shopList.push(data[i]);
+	        	console.log(i);
+	        
+	     }else if(scrollTop<=0){ 
+	     //滚动条距离顶部的高度小于等于0 TODO
+	     //alert("下拉刷新，要在这调用啥方法？");
+	     }
+	});
+
+
+	// 随机函数
+	function random(min,max){
+	var a = Math.random()*(max-min)+min,
+		b = Math.round(a);
+		return b;
+	}
+	</script>
+
+
+	<!-- <script type="text/javascript" src="js/index.js"></script> -->
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<body>
+	<header>
+		<nav>
+			<a class="arrow">
+				<img src="images/arrow-left.png"/>
+			</a>
+			<a class="type">
+				<span class="tenant selected">商户</span>
+				<span class="buy">闪惠团购</span>
+			</a>
+			<a class="search">
+				<img src="images/search.png" />
+			</a>
+		</nav>
+		<div>
+			<p>全部商区</p>
+			<p class="selected">全部美食</p>
+			<p>智能排序</p>
+		</div>
+	</header>
+	<section>
+	<div class="big">
+		<div class="img">
+			<img/>
+		</div>
+		<div class="content">
+			<h2><span class="shopName">南京大排档</span><span class="group"></span></h2>
+			<p><span class="star"></span>￥<span class="price">64</span>/人</p>
+			<p><span class="address">朝外大街</span><span class="cuisine">淮汤菜</span></p>
+		</div>
+	</div>
+	<p class="shop-type">
+		<span class="tuan-type"></span>
+		<span class="tuan-title">85代100元</span>
+		<span class="tuan-arrow"></span>
+	</p>
+	</section>
+</body>
+-->
+
+</html>
