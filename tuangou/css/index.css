@@ -276,7 +276,9 @@ section{
 	color: #999;
 	font-size: 12px;
 }
-
+/*.big .content{
+	border-bottom: 1px solid #e1e1e1;
+}*/
 
 .shop-type{
 	position: relative;
@@ -286,6 +288,7 @@ section{
 	line-height: 40px;
 	font-size: 13px;
 }
+
 .shop-type .tuan-type2{
 	display: inline-block;
 	margin-left: 5px;

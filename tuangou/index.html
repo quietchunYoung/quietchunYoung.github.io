@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>了不起的葱饼仿的团购</title>
+	<title>团团购</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0,width=device-width,height=device-height, maximum-scale=1.0, user-scalable=0">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -31,10 +31,10 @@
 	</header>
 
 	<!-- 商家列表 -->
+	<div id="shopList">
+	<section v-for="shop in shopList" >
 
-	<section id="shopList" >
-
-	<template v-for="shop in shopList">
+	
 	<div class="big" >
 		<div class="img">
 			<img :src="shop.shopPicture"/>
@@ -50,9 +50,9 @@
 		<span class="tuan-title">{{tuan.title}}</span>
 		<span class="tuan-arrow"></span>
 	</p>
-	</template>
+	
 	</section>
-
+	</div>
 
 
 	<script src="jquery-3.1.1.min.js"></script>
