@@ -1,0 +1,54 @@
+[{   // 商家图片
+    "shopPicture":"https://qcloud.dpfile.com/pc/rWnsP_sr86479E_IL6y2brQrBc352WVMat-CiIdJaYt5A1dtNM723PBv4iYRCNuI_Es9AvUr0sesLal2G0zjJA.jpg",
+    // 商家名称
+    "shopName":"利宝阁",
+    // 是否促销
+    "isPromo":"true",
+    // 是否优惠
+    "isHui":"false",
+    // 评分（1-5）
+    "star":"4.5",
+    // 人均消费
+    "price":"146",
+    // 地址
+    "address":"市中心区",
+    // 菜系
+    "type":"粤菜馆",
+    // 团购列表
+    "tuan": [{
+        // 1-券, 2-团
+        "type": 1,
+        // 标题
+        "title": "70代100元"
+    }, {
+        "type": 2,
+        "title": "660元 大寶果木烤鸭欢聚"
+    }]
+},{   // 商家图片
+    "shopPicture":"https://qcloud.dpfile.com/pc/rWnsP_sr86479E_IL6y2brQrBc352WVMat-CiIdJaYt5A1dtNM723PBv4iYRCNuI_Es9AvUr0sesLal2G0zjJA.jpg",
+    // 商家名称
+    "shopName":"",
+    // 是否促销
+    "isPromo":"true",
+    // 是否优惠
+    "isHui":"false",
+    // 评分（1-5）
+    "star":"4.5",
+    // 人均消费
+    "price":"146",
+    // 地址
+    "address":"市中心区",
+    // 菜系
+    "type":"粤菜馆",
+    // 团购列表
+    "tuan": [{
+        // 1-券, 2-团
+        "type": 1,
+        // 标题
+        "title": "70代100元"
+    }, {
+        "type": 2,
+        "title": "660元 大寶果木烤鸭欢聚"
+    }]
+}]
+  
