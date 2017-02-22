@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>购物</title>
+	<title>大众点评美食-模仿</title>
 	<meta name="viewport" content="initial-scale=1.0,width=device-width,height=device-height, maximum-scale=1.0, user-scalable=0">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
@@ -30,8 +30,8 @@
 	</header>
 	<section class="selector hidn " id="selector">
 		<div class="selectorNav" >
-			<div >商区</div>
-			<div   id="change">地铁</div>
+			<div v-on:click="change1"  id="business" class="curr">商区</div>
+			<div   v-on:click="change" id="metroo" >地铁</div>
 		</div>
 		<div class="selectorList"  >
 			<ul class="selectorListLeft">
@@ -42,11 +42,6 @@
 			<ul class="selectorListRight">
 				<li v-for="ite in listf" :title="ite.id" v-on:click="click2">{{ite.name}}</li>
 				
-				<!-- <li>龙华</li>
-				<li>观测</li>
-				<li>深圳火车北站</li>
-				<li>大浪</li>
-				<li>大林关</li> -->
 				
 			</ul>
 		</div>
@@ -80,6 +75,6 @@
 
 <script src="jquery-3.1.1.min.js"></script>
 <script src="vue.js"></script>
-<script src="index.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>

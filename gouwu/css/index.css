@@ -368,7 +368,7 @@ section{
 	height: 45px;
 	text-align: center;
 }
-.selectorNav div:first-child{
+.selectorNav .curr{
 	border-bottom: 2px solid #ff8400;
 }
 .selectorList{
